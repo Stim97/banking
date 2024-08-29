@@ -376,6 +376,7 @@
     @apply flex gap-3 items-center py-1 md:p-3 2xl:p-4 rounded-lg justify-center xl:justify-start;
   }
 
+  /* max-xl:hidden - it means that if the screen size is less than 1024px, dont show the label */
   .sidebar-label {
     @apply text-16 font-semibold text-black-2 max-xl:hidden;
   }
