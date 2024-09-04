@@ -14,13 +14,14 @@ import { cn } from "@/lib/utils"
 import Image from "next/image"
 import Link from "next/link"
 import { usePathname } from "next/navigation"
+import Footer from "./Footer"
 
 
 const MobileNav = ({ user }: MobileNavProps) => {
 
     const pathname = usePathname();
     return (
-        <section className="w-full max-w-[264px]">
+        <section className="">
             <Sheet>
                 <SheetTrigger>
                     <Image
@@ -32,9 +33,9 @@ const MobileNav = ({ user }: MobileNavProps) => {
                     />
                 </SheetTrigger>
 
-                <SheetContent className="bg-white border-none">
-                <SheetTitle></SheetTitle> 
-                <SheetDescription></SheetDescription>
+                <SheetContent className="bg-white border-none w-[300px] ">
+                    <SheetTitle></SheetTitle> 
+                    <SheetDescription></SheetDescription>
                     <Link href='/' className="flex items-center gap-2 cursor-pointer">
                         <Image
                             src="/icons/logo.svg"
@@ -78,7 +79,7 @@ const MobileNav = ({ user }: MobileNavProps) => {
                                 User
                             </nav>
                         </SheetClose>
-                        Footer
+                        <Footer user={user} type="mobile"/>
                     </div>
                 </SheetContent>
             </Sheet>

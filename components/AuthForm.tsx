@@ -20,9 +20,9 @@ import { Input } from "@/components/ui/input"
 import CustomInput from './CustomInput'
 import { authFormSchema } from '@/lib/utils'
 import { Loader2 } from 'lucide-react'
-
 import { signIn, signUp } from '@/lib/actions/user.actions'
 import { useRouter } from 'next/navigation'
+
 
 // const formSchema = z.object({
 //     email: z.string().email(),
@@ -31,14 +31,14 @@ import { useRouter } from 'next/navigation'
 
 const AuthForm = ({ type }: { type: string }) => {
     
+    
     const router = useRouter()
     const formSchema = authFormSchema('sign-in')
     
     const [user, setUser] = useState(null)
     const [isLoading, setIsLoading] = useState(false)
 
-    const form = useForm<z.infer<typeof formSchema>>({
-        resolver: zodResolver(formSchema),
+    const form = useForm<z.infer<typeof formSchema>>({resolver: zodResolver(formSchema),
         defaultValues: {
             email: "",
             password: "",
@@ -50,16 +50,16 @@ const AuthForm = ({ type }: { type: string }) => {
         try {
             //sign up with appwrite here
             if (type === "sign-up") {
-            //    const newUser = await signUp(data)
-            //    setUser(data)
+               const newUser = await signUp(data)
+               setUser(newUser)
             }
 
             if (type === "sign-in") {
-                // const res = await signIn({
-                //     email: data.email,
-                //     password: data.password
-                // })
-                // if (res) router.push('/')
+                const res = await signIn({
+                    email: data.email,
+                    password: data.password
+                })
+                if (res) router.push('/')
             }
             setIsLoading(true)
             console.log(data)
